@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello, World!</title>
+    
+    <style>
+      #chatbox{
+
+        width: 300px;
+        border:2px solid black;
+        background:red;
+        border-radius:20px;
+        margin: auto;
+        margin-left:1100px;
+        margin-top:300px;
+        padding:15px;
+        
+      }
+      
+      #chat{
+
+        padding:10px;
+        height: 200px;
+        overflow:auto;
+        border:2px solid black;
+        border-radius:10px;
+        background:white;
+        
+      }
+      input{
+        margin-top:10px;
+        padding:8px;
+        
+        
+      }
+      button{
+        padding:8px;
+        margin-left:10px;
+      }
+    </style>
+    
+  </head>
+  <body>
+      <h1 style="text-align:center">Tourist Website</h1>
+      
+      <div id="chatbox">
+        <h2 style="text-align:center">Tourist ChatBot</h2>
+        <div id="chat"></div>
+        <input type="text" id="input" placeholder="Ask Anything ... "/>
+        <button onclick="showChat() ">send</button>
+      </div>
+      <script >
+        
+        function showChat(){
+          
+          let userInput=document.getElementById("input").value.toLowerCase();
+          
+          let res=document.getElementById("chat");
+          
+          res.innerHTML+="<p><b>You : </b>"+userInput+ "</p>";
+          
+          let bot="";
+          if(userInput.includes("hello")){
+            bot="Hii how can i assist today !! ";
+          }
+          else{
+            bot="Sorry cant understand ";
+          }
+          
+          res.innerHTML+="<p><b>Bot : </b>"+bot+ "</p>";
+          
+          document.getElementById("input").value="";
+          res.scrollTop = res.scrollHeight;
+          
+        }
+        
+      </script>
+  </body>
+</html>

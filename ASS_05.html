@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tourist ChatBot</title>
+
+    <style>
+        body {
+            padding: 25px;
+            text-align: center;
+        }
+
+        #chatbox {
+            width: 300px;
+            margin: auto;
+            margin-top: 300px;
+            margin-left: 1100px;
+            background-color: red;
+            border-radius: 20px;
+            padding: 15px;
+        }
+
+        #chat {
+            height: 150px;
+            overflow: auto;
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: left;
+            margin-bottom: 10px;
+        }
+
+        input {
+            padding: 8px;
+            width: 180px;
+        }
+
+        button {
+            padding: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+
+        <h1>tourist Website</h1>
+
+        <nav><a href="#home.html">Home</a> | <a href="#destinations">Destinations</a> | <a href="#hotels">Hotels</a> | <a href="#food">Food</a></nav>
+
+        <div id="chatbox">
+
+            <h1>Tourist ChatBot</h1>
+
+            <div id="chat"></div>
+
+            <input type="text" id="userinput" placeholder="Ask anything...">
+
+            <button onclick="reply()">Send</button>
+
+        </div>
+    </div>
+
+    <script>
+
+        function reply() {
+
+            let input = document.getElementById("userinput").value.toLowerCase();
+
+            let chattext = document.getElementById("chat");
+
+            chattext.innerHTML += "<p><b>You:</b> " + input + "</p>";
+
+            let bot = "";
+
+            if (input.includes("hi") || input.includes("hello")) {
+                bot = "Hello! How can I assist you today?";
+            }
+
+            else if (input.includes("places")) {
+                bot = "Famous places to visit are Goa, Pune and Mumbai.";
+            }
+
+            else if (input.includes("hotels")) {
+                bot = "You can book hotels using OYO.";
+            }
+
+            else if (input.includes("food")) {
+                bot = "Pohe, Misal and Mutton are famous foods.";
+            }
+
+            else {
+                bot = "Cannot understand.";
+            }
+
+            chattext.innerHTML += "<p><b>Bot:</b> " + bot + "</p>";
+
+            document.getElementById("userinput").value = "";
+
+        }
+
+    </script>
+
+</body>
+
+</html>

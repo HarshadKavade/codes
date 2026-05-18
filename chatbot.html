@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Performance Expert System</title>
+
+    <style>
+
+        body{
+            font-family: Arial;
+            background:#f2f2f2;
+        }
+
+        .container{
+            width:400px;
+            margin:auto;
+            margin-top:40px;
+            background:white;
+            padding:20px;
+            border-radius:10px;
+            box-shadow:0px 0px 10px gray;
+        }
+
+        h2{
+            text-align:center;
+        }
+
+        input{
+            width:100%;
+            padding:8px;
+            margin-top:5px;
+            margin-bottom:15px;
+        }
+
+        button{
+            width:100%;
+            padding:10px;
+            background:blue;
+            color:white;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
+        }
+
+        #result{
+            margin-top:20px;
+            background:#eee;
+            padding:10px;
+            border-radius:5px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>Employee Performance Expert System</h2>
+
+        <label>Attendance Percentage</label>
+        <input type="number" id="attendance">
+
+        <label>Productivity Score (0-10)</label>
+        <input type="number" id="productivity">
+
+        <label>Teamwork Score (0-10)</label>
+        <input type="number" id="teamwork">
+
+        <label>Punctuality Score (0-10)</label>
+        <input type="number" id="punctuality">
+
+        <label>Communication Score (0-10)</label>
+        <input type="number" id="communication">
+
+        <label>Innovation Score (0-10)</label>
+        <input type="number" id="innovation">
+
+        <button onclick="checkPerformance()">Check Performance</button>
+
+        <div id="result"></div>
+
+    </div>
+
+    <script>
+
+        function checkPerformance(){
+
+            let attendance = Number(document.getElementById("attendance").value);
+            let productivity = Number(document.getElementById("productivity").value);
+            let teamwork = Number(document.getElementById("teamwork").value);
+            let punctuality = Number(document.getElementById("punctuality").value);
+            let communication = Number(document.getElementById("communication").value);
+            let innovation = Number(document.getElementById("innovation").value);
+
+            let totalScore =
+                (attendance / 10) +
+                productivity +
+                teamwork +
+                punctuality +
+                communication +
+                innovation;
+
+            let performance = "";
+            let risk = "";
+            let recommendation = "";
+
+            // Performance
+            if(totalScore >= 50){
+                performance = "EXCELLENT";
+                risk = "LOW";
+                recommendation = "Eligible for promotion and bonus";
+            }
+
+            else if(totalScore >= 40){
+                performance = "GOOD";
+                risk = "LOW";
+                recommendation = "Good employee with growth potential";
+            }
+
+            else if(totalScore >= 30){
+                performance = "AVERAGE";
+                risk = "MEDIUM";
+                recommendation = "Needs training and monitoring";
+            }
+
+            else{
+                performance = "POOR";
+                risk = "HIGH";
+                recommendation = "Immediate improvement required";
+            }
+
+            let alerts = "";
+
+            if(attendance < 60){
+                alerts += "<p>⚠ Low Attendance</p>";
+            }
+
+            if(productivity < 5){
+                alerts += "<p>⚠ Low Productivity</p>";
+            }
+
+            if(teamwork < 5){
+                alerts += "<p>⚠ Teamwork Improvement Needed</p>";
+            }
+
+            if(communication < 5){
+                alerts += "<p>⚠ Communication Training Recommended</p>";
+            }
+
+            if(innovation >= 9){
+                alerts += "<p>⭐ Highly Innovative Employee</p>";
+            }
+
+            document.getElementById("result").innerHTML =
+
+                "<h3>Performance Report</h3>" +
+
+                "<p><b>Total Score :</b> " + totalScore + "/60</p>" +
+
+                "<p><b>Performance :</b> " + performance + "</p>" +
+
+                "<p><b>Risk Level :</b> " + risk + "</p>" +
+
+                "<p><b>Recommendation :</b> " + recommendation + "</p>" +
+
+                alerts;
+        }
+
+    </script>
+
+</body>
+</html>
