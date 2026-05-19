@@ -1,0 +1,6 @@
+MONGO_URI=mongodb+srv://harshukavade08_db_user:aixsCJC0KVOHEQQO@cluster0.gs2wzb0.mongodb.net/?appName=Cluster0
+
+email=harshukavade08@gmail.com
+
+mongo pass = Harshad99.68*
+
