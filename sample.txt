@@ -1,0 +1,37 @@
+1. Open terminal on local machine
+cd Downloads
+ls
+
+Check myserver.pem exists.
+
+2. Change permission of PEM file (local machine)
+chmod 400 myserver.pem
+3. Connect local machine to EC2 Instance 1
+ssh -i myserver.pem ubuntu@13.232.177.0
+4. Copy PEM file from local machine to EC2 Instance 1 (important step)
+
+Run on local machine terminal:
+
+scp -i myserver.pem myserver.pem ubuntu@13.232.177.0:~
+5. Set permission inside EC2 Instance 1
+chmod 400 myserver.pem
+6. Create test file in EC2 Instance 1
+echo "hello harshad from instance 1" > test.xt
+ls
+7. Transfer file from EC2 Instance 1 to EC2 Instance 2
+
+Inside Instance 1:
+
+scp -i myserver.pem test.xt ubuntu@13.235.24.97:~
+8. Connect local machine to EC2 Instance 2
+ssh -i myserver.pem ubuntu@13.235.24.97
+9. Verify transferred file
+ls
+cat test.xt
+
+Output:
+
+hello harshad from instance 1
+
+Flow:
+Local Machine → EC2 Instance 1 → EC2 Instance 2 ✅

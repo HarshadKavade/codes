@@ -1,0 +1,32 @@
+cd Downloads
+chmod 400 mykey.pem
+ssh -i mykey.pem ubuntu@YOUR_PUBLIC_IP
+
+sudo apt update
+sudo apt upgrade -y
+
+sudo apt install -y nodejs npm git
+
+node -v
+npm -v
+git --version
+
+git clone https://github.com/yourusername/todo-app.git
+cd todo-app
+ls
+
+cd backend
+npm install
+nano .env
+
+node server.js
+# OR
+node app.js
+
+ssh -i mykey.pem ubuntu@YOUR_PUBLIC_IP
+
+cd todo-app/frontend
+npm install
+nano .env
+
+npm start
